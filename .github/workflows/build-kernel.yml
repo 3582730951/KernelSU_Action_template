@@ -251,6 +251,7 @@ jobs:
 
     - name: Build kernel
       run: |
+        chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang/bin:$PATH
         export KBUILD_BUILD_HOST=${{ env.BUILDER_HOST }}
@@ -277,6 +278,7 @@ jobs:
 
     - name: Checking the kernel compilation product
       run: |
+       chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace
        cd $GITHUB_WORKSPACE/kernel_workspace
        if [ -f android-kernel/out/arch/${{ env.ARCH }}/boot/${{ env.KERNEL_IMAGE_NAME }} ]; then
            echo "CHECK_FILE_IS_OK=true" >> $GITHUB_ENV
@@ -296,6 +298,7 @@ jobs:
     - name: Setting up AnyKenrel3
       if: env.CHECK_FILE_IS_OK == 'true'
       run: |
+        chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/osm0sis/AnyKernel3.git
         sed -i 's/do.devicecheck=1/do.devicecheck=0/g' AnyKernel3/anykernel.sh
@@ -317,6 +320,7 @@ jobs:
     - name: Setting up KernelSU boot image
       if: env.HAVE_KERNELSU_SOURCE_BOOT_IMAGE == 'true' && env.CHECK_FILE_IS_OK == 'true'
       run: |
+        chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace
         cd $GITHUB_WORKSPACE/kernel_workspace
         chmod +x ./tools/magiskboot
         cd bootimg_tmp
