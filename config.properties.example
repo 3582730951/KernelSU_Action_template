@@ -1,6 +1,6 @@
 KERNEL_SOURCE=https://github.com/3582730951/MiLinuxKernel_4.git
 KERNEL_SOURCE_BRANCH=MiEngine_1
-KERNEL_CONFIG=gki_config
+KERNEL_CONFIG=gki_defconfig
 KERNEL_IMAGE_NAME=Image.gz
 ARCH=arm64
 
