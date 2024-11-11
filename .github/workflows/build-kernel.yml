@@ -24,7 +24,38 @@ jobs:
     steps:
     - name: Check out
       uses: actions/checkout@v3
-
+    - name: Install dependencies
+      run: |
+          sudo apt update
+          sudo apt install -y \
+            build-essential \
+            bc \
+            bison \
+            flex \
+            libssl-dev \
+            libncurses5-dev \
+            curl \
+            libelf-dev \
+            ccache \
+            git-core \
+            gnupg2 \
+            wget \
+            python3 \
+            rsync \
+            zip \
+            device-tree-compiler \
+            gcc-aarch64-linux-gnu \
+            clang-14 \
+            lld-14 \
+            llvm-14 \
+            liblz4-dev \
+            libzstd-dev \
+            libxml2-utils \
+            make \
+            libudev-dev \
+            libpci-dev \
+            dwarves  # 安装 pahole 工具
+            
     - name: Read the configuration
       run: |
         CONFIG_ENV=config.properties.example
