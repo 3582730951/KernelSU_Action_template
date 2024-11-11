@@ -185,6 +185,7 @@ jobs:
         
     - name: Download the kernel source code
       run: |
+        chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace
         cd $GITHUB_WORKSPACE/kernel_workspace
         if [[ ${{ env.KERNEL_SOURCE }} =~ git ]]; then
           if [[ ${{ env.KERNEL_SOURCE }} == *'.tar.gz' ]]; then
